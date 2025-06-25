@@ -1,0 +1,32 @@
+{
+  "name": "enterprise-management-backend",
+  "version": "1.0.0",
+  "description": "Enterprise Management System Backend Services",
+  "scripts": {
+    "build": "npm run build:gateway && npm run build:user && npm run build:order && npm run build:admin",
+    "build:gateway": "cd api-gateway && npm run build",
+    "build:user": "cd user-service && npm run build",
+    "build:order": "cd order-service && npm run build",
+    "build:admin": "cd admin-service && npm run build",
+    "start": "concurrently \"npm run start:gateway\" \"npm run start:user\" \"npm run start:order\" \"npm run start:admin\"",
+    "start:gateway": "cd api-gateway && npm run start:dev",
+    "start:user": "cd user-service && npm run start:dev",
+    "start:order": "cd order-service && npm run start:dev",
+    "start:admin": "cd admin-service && npm run start:dev",
+    "install:all": "npm install && cd api-gateway && npm install && cd ../user-service && npm install && cd ../order-service && npm install && cd ../admin-service && npm install",
+    "test": "npm run test:gateway && npm run test:user && npm run test:order && npm run test:admin",
+    "test:gateway": "cd api-gateway && npm run test",
+    "test:user": "cd user-service && npm run test",
+    "test:order": "cd order-service && npm run test",
+    "test:admin": "cd admin-service && npm run test"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "workspaces": [
+    "api-gateway",
+    "user-service",
+    "order-service",
+    "admin-service"
+  ]
+} 
